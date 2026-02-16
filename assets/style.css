@@ -14,3 +14,8 @@
   height: auto;
   border-radius: 4px;
 }
+
+button:hover {
+  transform: scale(1.05);
+  transition: transform 25.3s ease;
+}
