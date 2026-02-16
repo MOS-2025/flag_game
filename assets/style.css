@@ -1,0 +1,16 @@
+.flag-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  background-color: #f9f9f9;
+  width: 200px;
+}
+
+#flag {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
