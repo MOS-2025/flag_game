@@ -11,19 +11,40 @@ const scoreDisplay = document.getElementById("score");
 const timerDisplay = document.getElementById("timer");
 
 
+// Settings
+const questionPerLevel = 2;
+
+
+
 // Game Variables
 let score = 0;
+let currentlevel = 0;
+let index = 0;
 let timeLeft = 15;
 let timer;
 let currentCountry = "";
 
-// Sample Country Data (Using FlagCDN)
-const countries = [
+// Sample Country Data (Using FlagCDN) Level 1
+const levelGroups = [
+[
   { name: "France", code: "fr" },
   { name: "Germany", code: "de" },
   { name: "Brazil", code: "br" },
   { name: "Japan", code: "jp" },
+],
+// Sample Country Data (Using FlagCDN) Level 2
+[
+    { name: "Canada", code: "ca" },
+    { name: "India", code: "in" },
+    { name: "Italy", code: "it" },
+    { name: "Mexico", code: "mx" },
+],
 ];
+
+const countries = levelGroups[1]; 
+
+
+
 // ==============================
 // Start Game
 // ==============================
