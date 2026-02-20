@@ -80,6 +80,12 @@ blankBtn.addEventListener("click", () => {
   guessInput.focus();
 });
 
+guessInput.addEventListener("keypress", function (e) {
+  if (e.key === "Enter") {
+    checkAnswer();
+  }
+});
+
 
 // ==============================
 // Initialize Game On Load
