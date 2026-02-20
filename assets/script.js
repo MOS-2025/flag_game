@@ -71,6 +71,14 @@ function checkAnswer() {
 // ==============================
 
 submitBtn.addEventListener("click", checkAnswer);
+nextBtn.addEventListener("click", () => {
+  startGame();
+});
+
+blankBtn.addEventListener("click", () => {
+  guessInput.value = "";
+  guessInput.focus();
+});
 
 
 // ==============================
