@@ -24,5 +24,27 @@ const countries = [
   { name: "Brazil", code: "br" },
   { name: "Japan", code: "jp" },
 ];
+// ==============================
+// Start Game
+// ==============================
+
+function startGame() {
+ resetTimer();
+  loadRandomFlag();
+  guessInput.value = "";
+  message.textContent = "";
+}
+
+// ==============================
+// Load Random Flag
+// ==============================
+
+function loadRandomFlag() {
+  const randomIndex = Math.floor(Math.random() * countries.length);
+  const country = countries[randomIndex];
+
+  currentCountry = country.name;
+  flagImg.src = `https://flagcdn.com/w320/${country.code}.png`;
+}
 
 
