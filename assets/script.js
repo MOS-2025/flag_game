@@ -29,7 +29,6 @@ const countries = [
 // ==============================
 
 function startGame() {
- resetTimer();
   loadRandomFlag();
   guessInput.value = "";
   message.textContent = "";
@@ -47,4 +46,36 @@ function loadRandomFlag() {
   flagImg.src = `https://flagcdn.com/w320/${country.code}.png`;
 }
 
+
+// ==============================
+// Check Answer
+// ==============================
+
+function checkAnswer() {
+  const userGuess = guessInput.value.trim().toLowerCase();
+  const correctAnswer = currentCountry.toLowerCase();
+
+  if (userGuess === correctAnswer) {
+    score++;
+    scoreDisplay.textContent = score;
+    message.textContent = "✅ Correct!";
+    message.className = "fw-semibold text-success";
+  } else {
+    message.textContent = "❌ Wrong! Try again.";
+    message.className = "fw-semibold text-danger";
+  }
+}
+
+// ==============================
+// Event Listeners
+// ==============================
+
+submitBtn.addEventListener("click", checkAnswer);
+
+
+// ==============================
+// Initialize Game On Load
+// ==============================
+
+window.onload = startGame;
 
