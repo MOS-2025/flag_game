@@ -41,7 +41,7 @@ const levelGroups = [
 ],
 ];
 
-const countries = levelGroups[1]; 
+const countries = levelGroups[0]; 
 
 
 
@@ -60,6 +60,7 @@ function startGame() {
 // ==============================
 
 function loadRandomFlag() {
+  const countries= levelGroups[currentlevel];
   const randomIndex = Math.floor(Math.random() * countries.length);
   const country = countries[randomIndex];
 
@@ -77,10 +78,21 @@ function checkAnswer() {
   const correctAnswer = currentCountry.toLowerCase();
 
   if (userGuess === correctAnswer) {
+    clearInterval(timer);
     score++;
     scoreDisplay.textContent = score;
     message.textContent = "✅ Correct!";
     message.className = "fw-semibold text-success";
+    submitBtn.disabled =true;
+    guessInput.disabled =true;
+
+    setTimeout(() => {
+    submitBtn.disabled =false;
+    guessInput.disabled =false;
+    startGame();
+    } ,2000);
+
+
   } else {
     message.textContent = "❌ Wrong! Try again.";
     message.className = "fw-semibold text-danger";
