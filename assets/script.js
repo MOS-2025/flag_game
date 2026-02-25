@@ -9,6 +9,7 @@ const blankBtn = document.getElementById("blankBtn");
 const message = document.getElementById("message");
 const scoreDisplay = document.getElementById("score");
 const timerDisplay = document.getElementById("timer");
+const levelDisplay = document.getElementById("levelDisplay");
 
 
 // Settings
@@ -23,6 +24,7 @@ let index = 0;
 let timeLeft = 15;
 let timer;
 let currentCountry = "";
+let questionsAnswered = 0;
 
 // Sample Country Data (Using FlagCDN) Level 1
 const levelGroups = [
@@ -91,6 +93,18 @@ function checkAnswer() {
     guessInput.disabled =false;
     startGame();
     } ,2000);
+
+        questionsAnswered++; // NEW
+
+    // Level progression
+    if (questionsAnswered >= questionPerLevel) { 
+      currentlevel = Math.min(currentlevel + 1, levelGroups.length - 1);
+      questionsAnswered = 0;
+
+      levelDisplay.textContent = `Level ${currentlevel + 1}`;
+      message.textContent = `🎉 Level ${currentlevel + 1}!`; 
+      message.className = "fw-semibold text-primary";
+    }
 
 
   } else {
