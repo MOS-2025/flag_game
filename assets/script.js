@@ -13,7 +13,7 @@ const levelDisplay = document.getElementById("levelDisplay");
 
 
 // Settings
-const questionPerLevel = 2;
+const questionPerLevel = 1;
 
 
 
@@ -41,9 +41,27 @@ const levelGroups = [
     { name: "Italy", code: "it" },
     { name: "Mexico", code: "mx" },
 ],
+// Sample Country Data (Using FlagCDN) Level 3
+[
+    { name: "Kenya", code: "ke" },
+    { name: "Nigeria", code: "ng" },
+    { name: "South Africa", code: "za" },
+    { name: "Saudi Arabia", code: "sa" },
+
+],
+
+//sample Counrty Data (Using FlagCDN) Level 4
+[
+    { name: "Belarus", code: "by" },
+    { name: "Bolivia", code: "bo" },
+    { name: "Cambodia", code: "kh" },
+    { name: "Costa Rica", code: "cr" },
+
+]
+
 ];
 
-const countries = levelGroups[0]; 
+//*const countries = levelGroups[0]; *//
 
 
 
@@ -91,7 +109,7 @@ function checkAnswer() {
     setTimeout(() => {
     submitBtn.disabled =false;
     guessInput.disabled =false;
-    startGame();
+    //*startGame();*//
     } ,2000);
 
         questionsAnswered++; // NEW
