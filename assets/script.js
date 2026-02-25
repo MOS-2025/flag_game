@@ -5,7 +5,7 @@ const flagImg = document.getElementById("flagImg");
 const guessInput = document.getElementById("guessInput");
 const submitBtn = document.getElementById("submitBtn");
 const nextBtn = document.getElementById("nextBtn");
-const blankBtn = document.getElementById("blankBtn");
+const playAgainBtn = document.getElementById("playAgainBtn");
 const message = document.getElementById("message");
 const scoreDisplay = document.getElementById("score");
 const timerDisplay = document.getElementById("timer");
@@ -139,6 +139,19 @@ function checkAnswer() {
     message.className = "fw-semibold text-danger";
   }
 }
+// ==============================
+// Reset Game
+// ==============================
+function resetGame() {
+  score = 0;
+  currentlevel = 0; 
+  questionsAnswered = 0;
+  levelDisplay.textContent = `Level ${currentlevel + 1}`;
+  scoreDisplay.textContent = score;
+  startGame();
+}
+
+
 
 // ==============================
 // Event Listeners
@@ -149,9 +162,8 @@ nextBtn.addEventListener("click", () => {
   startGame();
 });
 
-blankBtn.addEventListener("click", () => {
-  guessInput.value = "";
-  guessInput.focus();
+playAgainBtn.addEventListener("click", function() {
+  resetGame();
 });
 
 guessInput.addEventListener("keypress", function (e) {
