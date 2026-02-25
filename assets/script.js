@@ -20,7 +20,7 @@ const questionPerLevel = 1;
 
 // Game Variables
 let score = 0;
-let currentlevel = 0;
+let currentLevel = 0;
 let index = 0;
 let timeLeft = 15;
 let timer;
@@ -82,6 +82,32 @@ function startGame() {
   loadRandomFlag();
   guessInput.value = "";
   message.textContent = "";
+  startTimer();
+}
+
+// =================================================
+// Timer
+// =================================================
+function startTimer() {
+  clearInterval(timer);
+
+  timeLeft = 15; // reset to 15 seconds
+  timerDisplay.textContent = timeLeft;
+
+  timer = setInterval(() => {
+    timeLeft--;
+    timerDisplay.textContent = timeLeft;
+
+    if (timeLeft <= 0) {
+      clearInterval(timer);
+      message.textContent = `⏰ Time's up! The answer was ${currentCountry}`;
+      message.className = "fw-semibold text-warning";
+
+      setTimeout(() => {
+        startGame();
+      }, 2000);
+    }
+  }, 1000);
 }
 
 // ==============================
@@ -89,7 +115,7 @@ function startGame() {
 // ==============================
 
 function loadRandomFlag() {
-  const countries= levelGroups[currentlevel];
+  const countries= levelGroups[currentLevel];
   const randomIndex = Math.floor(Math.random() * countries.length);
   const country = countries[randomIndex];
 
@@ -125,11 +151,11 @@ function checkAnswer() {
 
     // Level progression
     if (questionsAnswered >= questionPerLevel) { 
-      currentlevel = Math.min(currentlevel + 1, levelGroups.length - 1);
+      currentLevel = Math.min(currentLevel + 1, levelGroups.length - 1);
       questionsAnswered = 0;
 
-      levelDisplay.textContent = `Level ${currentlevel + 1}`;
-      message.textContent = `🎉 Level ${currentlevel + 1}!`; 
+      levelDisplay.textContent = `Level ${currentLevel + 1}`;
+      message.textContent = `🎉 Level ${currentLevel + 1}!`; 
       message.className = "fw-semibold text-primary";
     }
 
@@ -144,9 +170,9 @@ function checkAnswer() {
 // ==============================
 function resetGame() {
   score = 0;
-  currentlevel = 0; 
+  currentLevel = 0; 
   questionsAnswered = 0;
-  levelDisplay.textContent = `Level ${currentlevel + 1}`;
+  levelDisplay.textContent = `Level ${currentLevel + 1}`;
   scoreDisplay.textContent = score;
   startGame();
 }
