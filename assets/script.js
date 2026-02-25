@@ -17,6 +17,7 @@ const questionPerLevel = 1;
 
 
 
+
 // Game Variables
 let score = 0;
 let currentlevel = 0;
@@ -57,7 +58,15 @@ const levelGroups = [
     { name: "Cambodia", code: "kh" },
     { name: "Costa Rica", code: "cr" },
 
-]
+],
+
+//sample Counrty Data (Using FlagCDN) Level 5
+
+[
+
+    { name: "Malta", code: "mt" },
+    { name: "Iceland", code: "is" },
+],
 
 ];
 
@@ -109,7 +118,7 @@ function checkAnswer() {
     setTimeout(() => {
     submitBtn.disabled =false;
     guessInput.disabled =false;
-    //*startGame();*//
+    startGame();
     } ,2000);
 
         questionsAnswered++; // NEW
