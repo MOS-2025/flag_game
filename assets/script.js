@@ -13,7 +13,9 @@ const levelDisplay = document.getElementById("levelDisplay");
 
 
 // Settings
-const questionPerLevel = 1;
+const questionPerLevel = 3;
+const totalLevels = 5;
+const requiredScore = 2;
 
 
 
@@ -147,24 +149,69 @@ function checkAnswer() {
     startGame();
     } ,2000);
 
-        questionsAnswered++; // NEW
+  questionsAnswered++;
 
-    // Level progression
-    if (questionsAnswered >= questionPerLevel) { 
-      currentLevel = Math.min(currentLevel + 1, levelGroups.length - 1);
-      questionsAnswered = 0;
+if (questionsAnswered >= questionPerLevel) {
+  finishLevel();
+  return;
+}
 
-      levelDisplay.textContent = `Level ${currentLevel + 1}`;
-      message.textContent = `🎉 Level ${currentLevel + 1}!`; 
-      message.className = "fw-semibold text-primary";
+} else {
+  message.textContent = "❌ Wrong! Try again.";
+  message.className = "fw-semibold text-danger";
+}
+}
+
+// ==============================
+// Finish Level
+// ==============================
+
+function finishLevel() {
+  clearInterval(timer);
+
+  if (score >= requiredScore) {
+
+    // ✅ If LAST LEVEL completed
+    if (currentLevel === levelGroups.length - 1) {
+      message.textContent = "🏆 CONGRATULATIONS! You completed ALL levels!";
+      message.className = "fw-semibold text-success";
+
+      submitBtn.disabled = true;
+      guessInput.disabled = true;
+      nextBtn.disabled = true;
+
+      return; // STOP GAME
     }
 
+    // ✅ Move to next level
+    currentLevel++;
+    questionsAnswered = 0;
+    score = 0;
+
+    scoreDisplay.textContent = score;
+    levelDisplay.textContent = `Level ${currentLevel + 1}`;
+    message.textContent = `🎉 Welcome to Level ${currentLevel + 1}!`;
+    message.className = "fw-semibold text-primary";
+
+    setTimeout(() => {
+      startGame();
+    }, 2000);
 
   } else {
-    message.textContent = "❌ Wrong! Try again.";
+    // ❌ Failed level
+    message.textContent = `❌ You need ${requiredScore}/${questionPerLevel} to pass. Restarting level...`;
     message.className = "fw-semibold text-danger";
+
+    questionsAnswered = 0;
+    score = 0;
+    scoreDisplay.textContent = score;
+
+    setTimeout(() => {
+      startGame();
+    }, 2000);
   }
 }
+
 // ==============================
 // Reset Game
 // ==============================
@@ -204,4 +251,3 @@ guessInput.addEventListener("keypress", function (e) {
 // ==============================
 
 window.onload = startGame;
-
