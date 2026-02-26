@@ -1,4 +1,4 @@
-
+/* jshint esversion: 6 */
 
 // DOM Elements
 const flagImg = document.getElementById("flagImg");
@@ -14,7 +14,7 @@ const levelDisplay = document.getElementById("levelDisplay");
 
 // Settings
 const questionPerLevel = 3;
-const totalLevels = 5;
+/* const totalLevels = 5;*/
 const requiredScore = 2;
 
 
@@ -23,7 +23,7 @@ const requiredScore = 2;
 // Game Variables
 let score = 0;
 let currentLevel = 0;
-let index = 0;
+/*let index = 0; */
 let timeLeft = 15;
 let timer;
 let currentCountry = "";
@@ -175,6 +175,7 @@ function finishLevel() {
     if (currentLevel === levelGroups.length - 1) {
       message.textContent = "🏆 CONGRATULATIONS! You completed ALL levels!";
       message.className = "fw-semibold text-success";
+    
 
       submitBtn.disabled = true;
       guessInput.disabled = true;
