@@ -122,7 +122,7 @@ function loadRandomFlag() {
   const country = countries[randomIndex];
 
   currentCountry = country.name;
-  flagImg.src = `https://flagcdn.com/w320/${country.code}.png`;
+  flagImg.src = `https://flagcdn.com/w320/${country.code}.webp`;
 }
 
 
