@@ -26,6 +26,7 @@ let timeLeft = 15;
 let timer;
 let currentCountry = "";
 let questionsAnswered = 0;
+let playerName = "";
 
 // Sample Country Data (Using FlagCDN) Level 1
 const levelGroups = [
@@ -84,7 +85,19 @@ const levelGroups = [
 
 //*const countries = levelGroups[0]; *//
 
+// ==============================
+// Ask Player Name
+// ==============================
 
+function askPlayerName() {
+  playerName = prompt("🌍 Welcome to the Flag Game!\n\nPlease enter your name:");
+
+  while (!playerName || playerName.trim() === "") {
+    playerName = prompt("Please enter a valid name to start:");
+  }
+
+  alert(`Good luck ${playerName}! 🎮`);
+}
 
 // ==============================
 // Start Game
@@ -183,7 +196,7 @@ function finishLevel() {
 
     // ✅ If LAST LEVEL completed
     if (currentLevel === levelGroups.length - 1) {
-      message.textContent = "🏆 CONGRATULATIONS! You completed ALL levels!";
+      message.textContent = `🏆 CONGRATULATIONS! ${playerName}, you completed ALL levels!`;
       message.className = "fw-semibold text-success";
     
 
@@ -237,7 +250,9 @@ function resetGame() {
 
   submitBtn.disabled = false;
   guessInput.disabled = false;
-  
+
+  askPlayerName();
+
   levelDisplay.textContent = `Level ${currentLevel + 1}`;
   scoreDisplay.textContent = score;
   startGame();
@@ -269,4 +284,7 @@ guessInput.addEventListener("keypress", function (e) {
 // Initialize Game On Load
 // ==============================
 
-window.onload = startGame;
+window.onload = function (){
+    askPlayerName();
+    startGame();
+};
