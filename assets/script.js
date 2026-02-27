@@ -13,9 +13,8 @@ const levelDisplay = document.getElementById("levelDisplay");
 
 
 // Settings
-const questionPerLevel = 3;
-/* const totalLevels = 5;*/
-const requiredScore = 2;
+const questionPerLevel = 1;
+const requiredScore = 1;
 
 
 
@@ -23,7 +22,6 @@ const requiredScore = 2;
 // Game Variables
 let score = 0;
 let currentLevel = 0;
-/*let index = 0; */
 let timeLeft = 15;
 let timer;
 let currentCountry = "";
@@ -36,6 +34,8 @@ const levelGroups = [
   { name: "Germany", code: "de" },
   { name: "Brazil", code: "br" },
   { name: "Japan", code: "jp" },
+  { name: "China", code: "cn" },
+  { name: "Ireland", code: "ie" },
 ],
 // Sample Country Data (Using FlagCDN) Level 2
 [
@@ -43,6 +43,8 @@ const levelGroups = [
     { name: "India", code: "in" },
     { name: "Italy", code: "it" },
     { name: "Mexico", code: "mx" },
+    { name: "Spain", code: "es" },
+    { name: "Australia", code: "au" },
 ],
 // Sample Country Data (Using FlagCDN) Level 3
 [
@@ -50,6 +52,8 @@ const levelGroups = [
     { name: "Nigeria", code: "ng" },
     { name: "South Africa", code: "za" },
     { name: "Saudi Arabia", code: "sa" },
+    { name: "South Korea", code: "kr" },
+    { name: "Argentina", code: "ar" },
 
 ],
 
@@ -59,6 +63,8 @@ const levelGroups = [
     { name: "Bolivia", code: "bo" },
     { name: "Cambodia", code: "kh" },
     { name: "Costa Rica", code: "cr" },
+    { name: "Croatia", code: "hr" },
+    { name: "Tunisia", code: "tn" },
 
 ],
 
@@ -68,6 +74,10 @@ const levelGroups = [
 
     { name: "Malta", code: "mt" },
     { name: "Iceland", code: "is" },
+    { name: "Angola", code: "ao" },
+    { name: "Cyprus", code: "cy" },
+    { name: "Estonia", code: "ee" },
+    { name: "Latvia", code: "lv" },
 ],
 
 ];
@@ -137,24 +147,24 @@ function checkAnswer() {
   if (userGuess === correctAnswer) {
     clearInterval(timer);
     score++;
+    questionsAnswered++;
     scoreDisplay.textContent = score;
     message.textContent = "✅ Correct!";
     message.className = "fw-semibold text-success";
     submitBtn.disabled =true;
     guessInput.disabled =true;
 
+
+    if (questionsAnswered >= questionPerLevel) {
+  finishLevel();
+  return;
+}
+
     setTimeout(() => {
     submitBtn.disabled =false;
     guessInput.disabled =false;
     startGame();
     } ,2000);
-
-  questionsAnswered++;
-
-if (questionsAnswered >= questionPerLevel) {
-  finishLevel();
-  return;
-}
 
 } else {
   message.textContent = "❌ Wrong! Try again.";
@@ -187,7 +197,7 @@ function finishLevel() {
     // ✅ Move to next level
     currentLevel++;
     questionsAnswered = 0;
-    score = 0;
+    /*score = 0;*/
 
     scoreDisplay.textContent = score;
     levelDisplay.textContent = `Level ${currentLevel + 1}`;
@@ -195,6 +205,8 @@ function finishLevel() {
     message.className = "fw-semibold text-primary";
 
     setTimeout(() => {
+    submitBtn.disabled = false;
+    guessInput.disabled = false;
       startGame();
     }, 2000);
 
@@ -208,6 +220,8 @@ function finishLevel() {
     scoreDisplay.textContent = score;
 
     setTimeout(() => {
+    submitBtn.disabled = false;
+    guessInput.disabled = false;
       startGame();
     }, 2000);
   }
@@ -220,6 +234,10 @@ function resetGame() {
   score = 0;
   currentLevel = 0; 
   questionsAnswered = 0;
+
+  submitBtn.disabled = false;
+  guessInput.disabled = false;
+  
   levelDisplay.textContent = `Level ${currentLevel + 1}`;
   scoreDisplay.textContent = score;
   startGame();
