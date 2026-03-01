@@ -29,7 +29,7 @@ let currentCountry = "";
 let questionsAnswered = 0;
 let playerName = "";
 let wrongAnswers = 0;
-let countyyIndex = 0;
+let countryIndex = 0;
 let shuffledCountries = [];
 
 // Sample Country Data (Using FlagCDN) Level 1
@@ -87,7 +87,6 @@ const levelGroups = [
 
 ];
 
-//*const countries = levelGroups[0]; *//
 
 // ==============================
 // Ask Player Name
@@ -100,7 +99,7 @@ function askPlayerName() {
     playerName = prompt("Please enter a valid name to start:");
   }
 
-  alert(`Good luck ${playerName}! 🎮`);
+  alert(`Good luck. The game has 5 levels, in order to move to next level you must score 8 points in each level. If you get 3 wrong answers in a level, you will fail that level. Good luck ${playerName}! 🎮`);
 }
 
 // ==============================
@@ -171,8 +170,6 @@ function shuffle(arr) {
 // ==============================
 
 function loadRandomFlag() {
-  /*const countries= levelGroups[currentLevel];
-  const randomIndex = Math.floor(Math.random() * countries.length);*/
   const country = shuffledCountries[countryIndex];
 
   currentCountry = country.name;
