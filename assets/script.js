@@ -29,6 +29,8 @@ let currentCountry = "";
 let questionsAnswered = 0;
 let playerName = "";
 let wrongAnswers = 0;
+let countyyIndex = 0;
+let shuffledCountries = [];
 
 // Sample Country Data (Using FlagCDN) Level 1
 const levelGroups = [
@@ -106,9 +108,16 @@ function askPlayerName() {
 // ==============================
 
 function startGame() {
+
+      if (questionsAnswered === 0) {
+    shuffledCountries = shuffle(levelGroups[currentLevel]);
+    countryIndex = 0;
+  }
+    
   loadRandomFlag();
   guessInput.value = "";
   message.textContent = "";
+  submitBtn.disabled = false;
   startTimer();
 }
 
@@ -143,17 +152,34 @@ function startTimer() {
   }, 1000);
 }
 
+// =================================================
+// ⭐ Fisher–Yates Shuffle (true random)
+// =================================================
+function shuffle(arr) {
+  const a = [...arr];
+
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+
+  return a;
+}
+
 // ==============================
 // Load Random Flag
 // ==============================
 
 function loadRandomFlag() {
-  const countries= levelGroups[currentLevel];
-  const randomIndex = Math.floor(Math.random() * countries.length);
-  const country = countries[randomIndex];
+  /*const countries= levelGroups[currentLevel];
+  const randomIndex = Math.floor(Math.random() * countries.length);*/
+  const country = shuffledCountries[countryIndex];
 
   currentCountry = country.name;
   flagImg.src = `https://flagcdn.com/w320/${country.code}.webp`;
+
+countryIndex++;
+
 }
 
 
