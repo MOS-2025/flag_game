@@ -13,8 +13,9 @@ const levelDisplay = document.getElementById("levelDisplay");
 
 
 // Settings
-const questionPerLevel = 1;
-const requiredScore = 1;
+const questionPerLevel = 5;
+const requiredScore = 3;
+const maxWrongAnswers = 3;
 
 
 
@@ -27,6 +28,7 @@ let timer;
 let currentCountry = "";
 let questionsAnswered = 0;
 let playerName = "";
+let wrongAnswers = 0;
 
 // Sample Country Data (Using FlagCDN) Level 1
 const levelGroups = [
@@ -90,7 +92,7 @@ const levelGroups = [
 // ==============================
 
 function askPlayerName() {
-  playerName = prompt("🌍 Welcome to the Flag Game!\n\nPlease enter your name:");
+  playerName = prompt("🌍 Welcome to the World Flag Game!\n\nPlease enter your name:");
 
   while (!playerName || playerName.trim() === "") {
     playerName = prompt("Please enter a valid name to start:");
@@ -125,12 +127,18 @@ function startTimer() {
 
     if (timeLeft <= 0) {
       clearInterval(timer);
+      wrongAnswers++;
+      questionsAnswered++;
+
       message.textContent = `⏰ Time's up! The answer was ${currentCountry}`;
       message.className = "fw-semibold text-warning";
 
-      setTimeout(() => {
-        startGame();
-      }, 2000);
+
+      if (wrongAnswers >= maxWrongAnswers || questionsAnswered >= questionPerLevel) {
+        setTimeout(finishLevel, 2000);
+      } else {
+        setTimeout(startGame, 2000);
+      }
     }
   }, 1000);
 }
@@ -157,31 +165,28 @@ function checkAnswer() {
   const userGuess = guessInput.value.trim().toLowerCase();
   const correctAnswer = currentCountry.toLowerCase();
 
-  if (userGuess === correctAnswer) {
+  if ( !userGuess) return ;
     clearInterval(timer);
-    score++;
+    /*score++;*/
     questionsAnswered++;
+  if (userGuess === correctAnswer) {
+    score++;
     scoreDisplay.textContent = score;
+
     message.textContent = "✅ Correct!";
     message.className = "fw-semibold text-success";
-    submitBtn.disabled =true;
-    guessInput.disabled =true;
-
-
-    if (questionsAnswered >= questionPerLevel) {
-  finishLevel();
-  return;
-}
-
-    setTimeout(() => {
-    submitBtn.disabled =false;
-    guessInput.disabled =false;
-    startGame();
-    } ,2000);
 
 } else {
-  message.textContent = "❌ Wrong! Try again.";
+    wrongAnswers++; 
+
+  message.textContent = `❌ Wrong! The answer was ${currentCountry}`;
   message.className = "fw-semibold text-danger";
+  }
+
+  if (wrongAnswers >= maxWrongAnswers || questionsAnswered >= questionPerLevel) {
+    setTimeout(finishLevel, 2000);
+  } else {
+    setTimeout(startGame, 2000);
 }
 }
 
@@ -210,7 +215,9 @@ function finishLevel() {
     // ✅ Move to next level
     currentLevel++;
     questionsAnswered = 0;
-    /*score = 0;*/
+    wrongAnswers = 0;
+    levelDisplay.textContent = `Level ${currentLevel + 1}`;
+    score = 0;
 
     scoreDisplay.textContent = score;
     levelDisplay.textContent = `Level ${currentLevel + 1}`;
@@ -224,12 +231,14 @@ function finishLevel() {
     }, 2000);
 
   } else {
-    // ❌ Failed level
+
+
     message.textContent = `❌ You need ${requiredScore}/${questionPerLevel} to pass. Restarting level...`;
     message.className = "fw-semibold text-danger";
 
     questionsAnswered = 0;
     score = 0;
+    wrongAnswers = 0;
     scoreDisplay.textContent = score;
 
     setTimeout(() => {
@@ -247,6 +256,7 @@ function resetGame() {
   score = 0;
   currentLevel = 0; 
   questionsAnswered = 0;
+  wrongAnswers = 0;
 
   submitBtn.disabled = false;
   guessInput.disabled = false;
