@@ -197,6 +197,20 @@ function checkAnswer() {
 function finishLevel() {
   clearInterval(timer);
 
+    if (wrongAnswers >= maxWrongAnswers) {
+
+    message.textContent = `❌ You got 3 wrong answers. Level failed!`;
+    message.className = "fw-semibold text-danger";
+
+    questionsAnswered = 0;
+    score = 0;
+    wrongAnswers = 0;
+    scoreDisplay.textContent = score;
+
+    setTimeout(startGame, 2000);
+    return;
+  }
+
   if (score >= requiredScore) {
 
     // ✅ If LAST LEVEL completed
@@ -217,7 +231,7 @@ function finishLevel() {
     questionsAnswered = 0;
     wrongAnswers = 0;
     levelDisplay.textContent = `Level ${currentLevel + 1}`;
-    score = 0;
+    /*score = 0;*/
 
     scoreDisplay.textContent = score;
     levelDisplay.textContent = `Level ${currentLevel + 1}`;
