@@ -14,7 +14,7 @@ const levelDisplay = document.getElementById("levelDisplay");
 
 // Settings
 const questionPerLevel = 5;
-const requiredScore = 3;
+const requiredScore = 4;
 const maxWrongAnswers = 3;
 
 
@@ -96,10 +96,10 @@ function askPlayerName() {
   playerName = prompt("🌍 Welcome to the World Flag Game!\n\nPlease enter your name:");
 
   while (!playerName || playerName.trim() === "") {
-    playerName = prompt("Please enter a valid name to start:");
+    playerName = prompt("Please enter your name to start:");
   }
 
-  alert(`Good luck. The game has 5 levels, in order to move to next level you must score 8 points in each level. If you get 3 wrong answers in a level, you will fail that level. Good luck ${playerName}! 🎮`);
+  alert(`Good luck. The game has 5 levels and 5 questions per level, in order to move to next level you must least 4 points to move to next level.If you get 3 wrong answers in a level, you will fail that level. Good luck ${playerName}! 🎮`);
 }
 
 // ==============================
