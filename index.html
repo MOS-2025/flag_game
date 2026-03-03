@@ -39,6 +39,7 @@
     </div>
   </header>
 
+  
 
     <!--Main Flag Game area-->
 
@@ -46,13 +47,20 @@
 
     <div class="card flag-card shadow-lg text-center p-4">
 
-      <h2 class="fw-bold mb-2"> Guess the Country Flag</h2>
-
-      <div class="mb-2">
-        <span class="badge bg-warning text-dark fs-6">
-          Time Left: <span id="timer">15</span>s
-        </span>
-      </div>
+      <!--<h2 class="fw-bold mb-2"> Guess the Country Flag</h2>-->
+      
+      <div class="mb-3">
+  <div class="card border-warning">
+    <div class="card-body text-start">
+      <h5 class="card-title text-warning">Game Rules</h5>
+      <ul class="mb-0">
+        <li>The game has <strong>5 levels</strong>.</li>
+        <li>You must get <strong>4 of 5 correct answers</strong> to move to the next level.</li>
+        <li>If you get <strong>3 wrong answers</strong>, the level will reset.</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
       <div id="levelDisplay" class=" fw-bold mb-2">
         <span class="badge bg-info text-dark fs-6">
@@ -69,6 +77,13 @@
         placeholder="Type in the country name..." 
         autofocus
         >
+
+
+        <div class="mb-2">
+        <span class="badge bg-warning text-dark fs-6">
+          Time Left: <span id="timer">15</span>s
+        </span>
+      </div>
 <!-- Buttons -->
 
         <div class="d-flex gap-2 mb-3">
