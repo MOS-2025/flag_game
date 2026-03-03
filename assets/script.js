@@ -92,7 +92,7 @@ const levelGroups = [
 // Ask Player Name
 // ==============================
 
-
+/*
 function askPlayerName() {
   playerName = prompt("🌍 Welcome to the World Flag Game!\n\nPlease enter your name:");
 
@@ -102,7 +102,7 @@ function askPlayerName() {
 
   alert(`Good luck. The game has 5 levels and 5 questions per level, in order to move to next level you must least 4 points to move to next level.If you get 3 wrong answers in a level, you will fail that level. Good luck ${playerName}! 🎮`);
 }
-
+*/
 
 // ==============================
 // Start Game
@@ -334,6 +334,6 @@ guessInput.addEventListener("keypress", function (e) {
 // ==============================
 
 document.addEventListener("DOMContentLoaded",function (){
-    askPlayerName();
+   /* askPlayerName();*/
     startGame();
 });
