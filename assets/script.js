@@ -27,7 +27,7 @@ let timeLeft = 15;
 let timer;
 let currentCountry = "";
 let questionsAnswered = 0;
-let playerName = "";
+/*let playerName = "";*/
 let wrongAnswers = 0;
 let countryIndex = 0;
 let shuffledCountries = [];
@@ -240,7 +240,7 @@ function finishLevel() {
 
     // ✅ If LAST LEVEL completed
     if (currentLevel === levelGroups.length - 1) {
-      message.textContent = `🏆 CONGRATULATIONS! ${playerName}, you completed ALL levels!`;
+      message.textContent = `🏆 CONGRATULATIONS! You completed ALL levels!`;
       message.className = "fw-semibold text-success";
     
 
@@ -300,7 +300,7 @@ function resetGame() {
   submitBtn.disabled = false;
   guessInput.disabled = false;
 
-  askPlayerName();
+  /*askPlayerName();*/
 
   levelDisplay.textContent = `Level ${currentLevel + 1}`;
   scoreDisplay.textContent = score;
