@@ -11,13 +11,10 @@ const scoreDisplay = document.getElementById("score");
 const timerDisplay = document.getElementById("timer");
 const levelDisplay = document.getElementById("levelDisplay");
 
-
 // Settings
 const questionPerLevel = 5;
 const requiredScore = 4;
 const maxWrongAnswers = 3;
-
-
 
 
 // Game Variables
@@ -27,7 +24,6 @@ let timeLeft = 15;
 let timer;
 let currentCountry = "";
 let questionsAnswered = 0;
-/*let playerName = "";*/
 let wrongAnswers = 0;
 let countryIndex = 0;
 let shuffledCountries = [];
@@ -61,7 +57,6 @@ const levelGroups = [
     { name: "Argentina", code: "ar" },
 
 ],
-
 //sample Counrty Data (Using FlagCDN) Level 4
 [
     { name: "Belarus", code: "by" },
@@ -72,9 +67,7 @@ const levelGroups = [
     { name: "Tunisia", code: "tn" },
 
 ],
-
 //sample Counrty Data (Using FlagCDN) Level 5
-
 [
 
     { name: "Malta", code: "mt" },
@@ -86,23 +79,6 @@ const levelGroups = [
 ],
 
 ];
-
-
-// ==============================
-// Ask Player Name
-// ==============================
-
-/*
-function askPlayerName() {
-  playerName = prompt("🌍 Welcome to the World Flag Game!\n\nPlease enter your name:");
-
-  while (!playerName || playerName.trim() === "") {
-    playerName = prompt("Please enter your name to start:");
-  }
-
-  alert(`Good luck. The game has 5 levels and 5 questions per level, in order to move to next level you must least 4 points to move to next level.If you get 3 wrong answers in a level, you will fail that level. Good luck ${playerName}! 🎮`);
-}
-*/
 
 // ==============================
 // Start Game
@@ -121,7 +97,6 @@ function startGame() {
   submitBtn.disabled = false;
   startTimer();
 }
-
 // =================================================
 // Timer
 // =================================================
@@ -181,7 +156,6 @@ countryIndex++;
 
 }
 
-
 // ==============================
 // Check Answer
 // ==============================
@@ -192,7 +166,6 @@ function checkAnswer() {
 
   if ( !userGuess) return ;
     clearInterval(timer);
-    /*score++;*/
     questionsAnswered++;
   if (userGuess === correctAnswer) {
     score++;
@@ -256,7 +229,6 @@ function finishLevel() {
     questionsAnswered = 0;
     wrongAnswers = 0;
     levelDisplay.textContent = `Level ${currentLevel + 1}`;
-    /*score = 0;*/
 
     scoreDisplay.textContent = score;
     levelDisplay.textContent = `Level ${currentLevel + 1}`;
@@ -300,14 +272,11 @@ function resetGame() {
   submitBtn.disabled = false;
   guessInput.disabled = false;
 
-  /*askPlayerName();*/
 
   levelDisplay.textContent = `Level ${currentLevel + 1}`;
   scoreDisplay.textContent = score;
   startGame();
 }
-
-
 
 // ==============================
 // Event Listeners
@@ -328,12 +297,10 @@ guessInput.addEventListener("keypress", function (e) {
   }
 });
 
-
 // ==============================
 // Initialize Game On Load
 // ==============================
 
 document.addEventListener("DOMContentLoaded",function (){
-   /* askPlayerName();*/
     startGame();
 });
