@@ -1,13 +1,13 @@
 # 🌍 World Flag Game
 
-An interactive, multi-level geography quiz built with **JavaScript, HTML & CSS**, designed to test users’ knowledge of world flags through timed challenges with progressive difficulty levels.
+An interactive, multi-level geography quiz game built with **JavaScript, HTML & CSS**, designed to test users’ knowledge of world flags through timed challenges with progressive difficulty levels.
 
 ---
 
 ## 🔗 Live Project
 
 - **Live Site:** https://mos-2025.github.io/flag_game/
-- **Repository:** https://github.com/your-username/world-flag-game  
+- **Repository:** https://github.com/MOS-2025/flag_game 
 
 ---
 
