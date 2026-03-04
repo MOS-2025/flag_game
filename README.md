@@ -11,7 +11,7 @@ An interactive, multi-level geography quiz built with **JavaScript, HTML & CSS**
 
 ---
 
-## 1️⃣ Project Overview
+## 1 Project Overview
 
 The **World Flag Game** is a browser-based educational quiz application that challenges users to identify countries based on their national flags.
 
@@ -34,7 +34,7 @@ The **World Flag Game** is a browser-based educational quiz application that cha
 
 ---
 
-## 2️⃣ UX (User Experience)
+## 2 UX (User Experience)
 
 - Immediate feedback system improves engagement  
 - Colour-coded messaging enhances clarity and accessibility  
@@ -43,10 +43,30 @@ The **World Flag Game** is a browser-based educational quiz application that cha
 - Timer pressure increases cognitive engagement  
 
 The navbar and footer were developed using **Bootstrap 5.3**.
+<img width="940" height="36" alt="image" src="https://github.com/user-attachments/assets/edcca78a-89e6-46be-a4a8-61ac75bfc0b1" />
+
+- Immediate feedback system improves engagement
+- ## Structural Layout
+The UI is structured around:
+- Game Rules
+- Flag display image
+- Input field
+- Submit button
+- Next button
+- Score display
+- Timer display
+- Level display
+- Feedback message container
+
+<img width="940" height="424" alt="image" src="https://github.com/user-attachments/assets/9b293b2f-34a5-470b-86fc-e854721f0f5f" />
+
+The navbar and footer were developed using **Bootstrap 5.3**.
+<img width="940" height="36" alt="image" src="https://github.com/user-attachments/assets/0a6d985a-857f-4778-892e-5f93cf4ba020" />
+
 
 ---
 
-## 3️⃣ Game Logic & Architecture
+## 3 Game Logic & Architecture
 
 The game maintains internal state using:
 
@@ -81,7 +101,7 @@ To resolve this, the **Fisher–Yates Shuffle Algorithm** was implemented, ensur
 
 ---
 
-## 4️⃣ Features
+## 4 Features
 
 ### Core Features
 
@@ -89,38 +109,41 @@ To resolve this, the **Fisher–Yates Shuffle Algorithm** was implemented, ensur
 - 15-second timed questions  
 - Real-time score tracking  
 - Failure threshold system  
-- Automatic level progression  
-- Personalized welcome message  
+- Automatic level progression   
 - Keyboard "Enter" submission support  
 - Game reset functionality  
 
 ---
 
-## 5️⃣ Responsive Design
+## 5 Responsive Design
 
 Fully responsive across devices:
 
 - Stacked buttons for smaller screens  
 - Touch-friendly inputs  
 - Scaled flag images  
-- Adaptive spacing  
+- Adaptive spacing
+- <img width="940" height="545" alt="image" src="https://github.com/user-attachments/assets/985e8c37-8802-4d93-865b-86c69bdcc3a8" />
+
 
 ---
 
-## 6️⃣ Future Enhancements
+## 6 Future Enhancements
 
 - Local Storage high score persistence  
 - Leaderboard system  
 - Difficulty modes  
 - Dark mode toggle  
 - Sound effects & animations  
-- Multiplayer mode  
+- Multiplayer mode
+- Additional countries
+- Countries by region 
 
 > A name input feature was partially implemented but removed due to Lighthouse performance impact caused by JavaScript alert popups.
 
 ---
 
-## 7️⃣ Technologies Used
+## 7 Technologies Used
 
 - HTML5  
 - CSS3  
@@ -129,18 +152,7 @@ Fully responsive across devices:
 
 ---
 
-## 8️⃣ External Resources
-
-- Flag images via FlagCDN API  
-- Traversy Media tutorials  
-- MDN Web Docs  
-- W3Schools  
-- Bootstrap 5 library  
-- Fisher–Yates Shuffle Algorithm  
-
----
-
-## 9️⃣ Testing & Validation
+## 8 Testing & Validation
 
 ### Functional Testing
 
@@ -158,16 +170,25 @@ Fully responsive across devices:
 
 ### Validation
 
-- No CSS validation errors  
-- No HTML validation errors  
-- No JavaScript validation errors  
+- No CSS validation errors
+- <img width="944" height="341" alt="image" src="https://github.com/user-attachments/assets/ff462fee-e24c-4b3c-83b5-6a9825851b6f" />
+
+- No HTML validation errors
+- <img width="944" height="341" alt="image" src="https://github.com/user-attachments/assets/d23cf51a-603d-443e-af6d-6548adf7c646" />
+
+- No JavaScript validation errors
+- <img width="940" height="479" alt="image" src="https://github.com/user-attachments/assets/6ca40966-996d-4250-8222-e60d3e8d79ee" />
+
+- Lighthouse Score
+- <img width="944" height="588" alt="image" src="https://github.com/user-attachments/assets/e5d8886f-e64a-4fc5-ab4b-2fc17ee5cffb" />
+
 
 ---
 
-## 🔟 Commits & Deployment
+## 9 Commits & Deployment
 
-1. Initial commits pushed to GitHub.  
-2. All commits were clearly commented.  
+1. The site was deplayed to GitHub when the first commits were complete.  
+2. All commits were clearly commented throughout the project.  
 3. Deployed using GitHub Pages.  
 
 ---
@@ -176,4 +197,8 @@ Fully responsive across devices:
 
 - Flag images provided via FlagCDN  
 - Bootstrap 5 library  
-- Fisher–Yates Shuffle Algorithm implementation  
+- Fisher–Yates Shuffle Algorithm implementation was used to randomise the flagselection
+- MDN Web Docs
+- Traversy Media tutorials.
+- W3Schools was used as a resource when developing code, for example event listeners.
+  
