@@ -6,7 +6,7 @@ An interactive, multi-level geography quiz built with **JavaScript, HTML & CSS**
 
 ## 🔗 Live Project
 
-- **Live Site:** https://your-live-site-link.com  
+- **Live Site:** https://mos-2025.github.io/flag_game/
 - **Repository:** https://github.com/your-username/world-flag-game  
 
 ---
